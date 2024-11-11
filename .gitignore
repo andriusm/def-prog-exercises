@@ -26,3 +26,4 @@ go.work.sum
 
 # local dbs
 *.db
+def-prog-exercises
