@@ -2,7 +2,7 @@ package app
 
 import (
 	"context"
-	"database/sql"
+	// "database/sql"
 	"errors"
 	"io"
 	"log"
@@ -10,6 +10,9 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	sql "github.com/andriusm/def-prog-exercises/safesql"
+	"github.com/andriusm/def-prog-exercises/safesql/legacyconversions"
 
 	"embed"
 )
@@ -50,7 +53,7 @@ func (ah *AuthHandler) IsLogged(r *http.Request) bool {
 }
 
 func (ah *AuthHandler) getUserCount(ctx context.Context) (int, error) {
-	rows, err := ah.db.QueryContext(ctx, `SELECT COUNT(*) FROM users`)
+	rows, err := ah.db.QueryContext(ctx, legacyconversions.RiskilyAssumeTrustedSQL(`SELECT COUNT(*) FROM users`))
 	if err != nil {
 		return 0, err
 	}

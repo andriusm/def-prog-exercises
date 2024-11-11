@@ -1,4 +1,4 @@
-module github.com/empijei/def-prog-exercises
+module github.com/andriusm/def-prog-exercises
 
 go 1.23.1
 
